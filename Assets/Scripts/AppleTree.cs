@@ -1,24 +1,34 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class AppleTree : MonoBehaviour
+public class ApplePicker : MonoBehaviour
 {
-
+    [Header("Set In Inspector")]
     public GameObject applePrefab;
+
     public float speed = 1f;
+
     public float leftAndRightEdge = 10f;
+
     public float chanceToChangeDirections = 0.1f;
+
     public float secondsBetweenAppleDrops = 1f;
+    // Start is called before the first frame update
 
-
-    // Use this for initialization
     void Start()
     {
-        InvokeRepeating("DropApple", 2f, secondsBetweenAppleDrops);
+        Invoke("DropApple", 2f);
+    }
+
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        Invoke("DropApple", secondsBetweenAppleDrops);
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = transform.position;
@@ -36,17 +46,12 @@ public class AppleTree : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    // Update is called once per frame
+    void fixedUpdate()
     {
         if (Random.value < chanceToChangeDirections)
         {
             speed *= -1;
         }
-    }
-
-    void DropApple()
-    {
-        GameObject apple = Instantiate(applePrefab) as GameObject;
-        apple.transform.position = transform.position;
     }
 }
