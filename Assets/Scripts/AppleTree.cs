@@ -16,11 +16,11 @@ public class AppleTree : MonoBehaviour
     public float secondsBetweenAppleDrops = 1f;
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
-        // Dropping apples every second
+        
 
         Invoke("DropApple", 2f);
 
@@ -33,26 +33,26 @@ public class AppleTree : MonoBehaviour
         Invoke("DropApple", secondsBetweenAppleDrops);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 
-        //tree movement
+       
 
-        Vector3 pos = transform.position;       // current position
-        pos.x += speed * Time.deltaTime;        // change in time * speed
-        transform.position = pos;               // pos becomes new location of tree
+        Vector3 pos = transform.position;      
+        pos.x += speed * Time.deltaTime;        
+        transform.position = pos;               
 
-        // changing directions
+     
 
         if (pos.x < -leftAndRightEdge)
         {
-            // are we at the left-most side?
+            
             speed = Mathf.Abs(speed);
         }
         else if (pos.x > leftAndRightEdge)
         {
-            // are we at the right-most side?
+            
             speed = -Mathf.Abs(speed);
         }
 
@@ -60,11 +60,11 @@ public class AppleTree : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Changing Direction Randommly is now time-based because of FixedUpdate()
+      
 
         if (Random.value < chanceToChangeDirections)
         {
-            speed *= -1; // Change direction
+            speed *= -1; 
         }
     }
 

@@ -11,7 +11,7 @@ public class Basket : MonoBehaviour
 
     public TextMeshProUGUI scoreGT;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         GameObject scoreGO = GameObject.Find("ScoreCounter");
@@ -19,7 +19,7 @@ public class Basket : MonoBehaviour
         scoreGT.text = "0";
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 
